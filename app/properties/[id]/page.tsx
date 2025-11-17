@@ -1,45 +1,74 @@
-const ReservationSidebar = () => {
+import Image from "next/image";
+import ReservationSidebar from "../../components/properties/ReservationSidebar";
+
+
+const PropertyDetailPage = () => {
     return (
-        <aside className="mt-6 p-6 col-span-2 rounded-xl border border-gray-300 shadow-xl">
-            <h2 className="mb-5 text-2xl">$200 Per night</h2>
-
-
-
-
-            <div className="mb-6 p-3 border border-gray-400 rounded-xl">
-                <label className="mb-2 block font-bold text-xs">Guests</label>
-                <select className="w-full -ml-1 text-xm">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                </select>
+        <main className="max-w-[1500px] mx-auto px-6 pb-6">
+            <div className="w-full h-[64vh] mb-4 overflow-hidden rounded-xl relative">
+                <Image
+                    fill
+                    src="/beach_1.jpg"
+                    className="object-cover w-full h-full"
+                    alt="Beach house"
+                />
             </div>
 
 
-            <div className="w-full mb-6 py-6 text-center text-white bg-airbnb hover:bg-airbnb-dark rounded-xl">
-                <p className="text-lg font-bold">Book</p>
+
+
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div className="py-6 pr-6 col-span-3">
+                    <h1 className="mb-4 text-4xl">Property Name</h1>
+
+
+
+
+                    <span className="mb-6 block text-lg text-gray-600">
+                        4 guests - 2 bedrooms - 1 bathrooms
+                    </span>
+                    <hr />
+
+
+
+
+                    <div className="py-6 flex items-center space-x-4">
+                        <Image
+                            src="/profile_pic_1.jpg"
+                            width={50}
+                            height={50}
+                            className="rounded-full"
+                            alt="The user name"
+                        />
+                        <p><strong>Lee Ar U. Ramirez</strong> is your host</p>
+
+
+
+
+                    </div>
+                    <hr />
+
+
+
+
+                    <p className="mt-6 text-lg">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+
+
+
+                <ReservationSidebar />
             </div>
-
-
-            <div className="mb-4 flex justify-between align-center">
-                <p>$200 x 4 nights</p>
-                <p>$800</p>
-            </div>
-
-
-            <div className="mb-4 flex justify-between align-center">
-                <p>Djangobnb Fee</p>
-                <p>$40</p>
-            </div>
-            <hr />
-
-
-            <div className="mb-4 flex justify-between align-center font-bold">
-                <p>Total</p>
-                <p>$840</p>
-            </div>
-        </aside>
+        </main>
     )
 }
-export default ReservationSidebar;
+
+
+
+
+export default PropertyDetailPage;
