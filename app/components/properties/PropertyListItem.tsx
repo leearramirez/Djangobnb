@@ -20,6 +20,7 @@ const PropertyListItem: React.FC<PropertyProps> = ({
           <div className="relative overflow-hidden aspect-square rounded-xl">
                 <Image
                     fill
+                    unoptimized
                     src={property.image_url}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="hover:scale-110 object-cover transition h-full w-full"

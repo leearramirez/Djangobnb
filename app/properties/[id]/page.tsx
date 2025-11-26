@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import ReservationSidebar from "../../components/properties/ReservationSidebar";
 
 
@@ -34,7 +35,7 @@ const PropertyDetailPage = () => {
 
                     <div className="py-6 flex items-center space-x-4">
                         <Image
-                            src="/profile_pic_1.jpg"
+                            src="/profile_pic_1.jpg" // This is a hardcoded path
                             width={50}
                             height={50}
                             className="rounded-full"
