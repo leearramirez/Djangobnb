@@ -33,7 +33,7 @@ const UserNav = () => {
         }
 
 
-        const response = await apiService.post('/api/auth/login/', JSON.stringify(formData))
+        const response = await apiService.postWithoutToken('/api/auth/login/', JSON.stringify(formData))
 
 
         if (response.access) {
