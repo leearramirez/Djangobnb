@@ -1,15 +1,21 @@
 import Image from "next/image";
-
 import ReservationSidebar from "../../components/properties/ReservationSidebar";
 
 
-const PropertyDetailPage = () => {
+import apiService from "@/app/services/apiService";
+
+
+const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
+    const resolvedParams = await params;
+    const property = await apiService.get(`/api/properties/${resolvedParams.id}`);
+
+
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
             <div className="w-full h-[64vh] mb-4 overflow-hidden rounded-xl relative">
                 <Image
                     fill
-                    src="/beach_1.jpg"
+                    src={property.image_url}
                     className="object-cover w-full h-full"
                     alt="Beach house"
                 />
@@ -20,28 +26,30 @@ const PropertyDetailPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div className="py-6 pr-6 col-span-3">
-                    <h1 className="mb-4 text-4xl">Property Name</h1>
-
-
+                    <h1 className="mb-4 text-4xl">{property.title}</h1>
 
 
                     <span className="mb-6 block text-lg text-gray-600">
-                        4 guests - 2 bedrooms - 1 bathrooms
+                        {property.guests} guests - {property.bedrooms} bedrooms - {property.bathrooms} bathrooms
                     </span>
+
+
                     <hr />
 
 
 
 
                     <div className="py-6 flex items-center space-x-4">
-                        <Image
-                            src="/profile_pic_1.jpg" // This is a hardcoded path
-                            width={50}
-                            height={50}
-                            className="rounded-full"
-                            alt="The user name"
-                        />
-                        <p><strong>Lee Ar U. Ramirez</strong> is your host</p>
+                        {property.landlord.avatar_url && (
+                            <Image
+                                src={property.landlord.avatar_url}
+                                width={50}
+                                height={50}
+                                className="rounded-full"
+                                alt="The user name"
+                            />
+                        )}
+                        <p><strong>{property.landlord.name}</strong> is your host</p>
 
 
 
@@ -53,17 +61,16 @@ const PropertyDetailPage = () => {
 
 
                     <p className="mt-6 text-lg">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        {property.description}
                     </p>
                 </div>
 
 
 
 
-                <ReservationSidebar />
+                <ReservationSidebar
+                    property={property}
+                />
             </div>
         </main>
     )
@@ -73,3 +80,5 @@ const PropertyDetailPage = () => {
 
 
 export default PropertyDetailPage;
+
+
