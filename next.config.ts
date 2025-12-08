@@ -1,22 +1,26 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+    /* config options here */
+    reactCompiler: true,
     images: {
-        dangerouslyAllowLocalIP: true,
-        remotePatterns: [
+        unoptimized: true,
+        remotePatterns: [ //kani sya mag act as a security guard, para ang e allow niya nga images are from the backend rajud
             {
                 protocol: 'http',
                 hostname: '127.0.0.1',
                 port: '8000',
-                pathname: '/media/uploads/properties/**',
+                pathname: '/**',
             },
             {
                 protocol: 'http',
                 hostname: 'localhost',
                 port: '8000',
-                pathname: '/media/uploads/properties/**',
+                pathname: '/**',
             },
         ],
     },
 };
 
 export default nextConfig;
+

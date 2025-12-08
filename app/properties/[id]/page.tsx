@@ -1,13 +1,21 @@
 import Image from "next/image";
-import ReservationSidebar from "../../components/properties/ReservationSidebar";
+import Link from "next/link";
+import ReservationSidebar from "@/app/components/properties/ReservationSidebar";
 
 
 import apiService from "@/app/services/apiService";
+import { getUserId } from "@/app/lib/action";
 
 
-const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
-    const resolvedParams = await params;
-    const property = await apiService.get(`/api/properties/${resolvedParams.id}`);
+
+
+const PropertyDetailPage = async (props: { params: { id: string } }) => {
+    const params = await props.params;
+    const property = await apiService.get(`/api/properties/${params.id}/`);
+    const userId = await getUserId();
+
+
+    console.log('userId', userId);
 
 
     return (
@@ -20,8 +28,6 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                     alt="Beach house"
                 />
             </div>
-
-
 
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -37,9 +43,10 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                     <hr />
 
 
-
-
-                    <div className="py-6 flex items-center space-x-4">
+                    <Link
+                        href={`/landlords/${property.landlord.id}`}
+                        className="py-6 flex items-center space-x-4"
+                    >
                         {property.landlord.avatar_url && (
                             <Image
                                 src={property.landlord.avatar_url}
@@ -49,15 +56,13 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                                 alt="The user name"
                             />
                         )}
+
+
                         <p><strong>{property.landlord.name}</strong> is your host</p>
+                    </Link>
 
 
-
-
-                    </div>
                     <hr />
-
-
 
 
                     <p className="mt-6 text-lg">
@@ -66,10 +71,9 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                 </div>
 
 
-
-
                 <ReservationSidebar
                     property={property}
+                    userId={userId}
                 />
             </div>
         </main>
@@ -77,8 +81,4 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
 }
 
 
-
-
 export default PropertyDetailPage;
-
-
