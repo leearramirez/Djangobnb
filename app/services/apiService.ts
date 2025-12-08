@@ -10,7 +10,8 @@ const apiService = {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     // 'Authorization': `Bearer ${token}`
-                }
+                },
+                credentials: 'include',
             })
                 .then(response => response.json())
                 .then((json) => {

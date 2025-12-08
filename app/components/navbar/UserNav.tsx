@@ -51,13 +51,6 @@ const UserNav: React.FC<UserNavProps> = ({
                 <div className="w-[220px] absolute top-[60px] right-0 bg-white border border-gray-300 rounded-xl shadow-md flex flex-col cursor-pointer overflow-hidden">
                     {userId ? (
                         <>
-                            {/* <MenuLink
-                                label='Inbox'
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    router.push('/inbox');
-                                }}
-                            /> */}
 
 
                             <MenuLink
@@ -69,22 +62,13 @@ const UserNav: React.FC<UserNavProps> = ({
                             />
 
 
-                            {/* <MenuLink
-                                label='My favorites'
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    router.push('/myfavorites');
-                                }}
-                            />
-
-
                             <MenuLink
                                 label='My reservations'
                                 onClick={() => {
                                     setIsOpen(false);
                                     router.push('/myreservations');
                                 }}
-                            /> */}
+                            />
 
 
                             <LogoutButton />
