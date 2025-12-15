@@ -11,11 +11,13 @@ import { getUserId } from "@/app/lib/action";
 
 const PropertyDetailPage = async (props: { params: { id: string } }) => {
     const params = await props.params;
-    const property = await apiService.get(`/api/properties/${params.id}/`);
+    const response = await apiService.get(`/api/properties/${params.id}/`);
+    const property = response;
     const userId = await getUserId();
 
 
     console.log('userId', userId);
+    console.log('property', property);
 
 
     return (
