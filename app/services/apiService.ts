@@ -1,16 +1,21 @@
 const apiService = {
-    get: async function (url: string): Promise<any> {
+    get: async function (url: string, token: string | null = null): Promise<any> {
         console.log('get', url);
 
 
         return new Promise((resolve, reject) => {
+            const headers: any = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
                 method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
-                },
+                headers: headers,
                 credentials: 'include',
             })
                 .then(response => response.json())
