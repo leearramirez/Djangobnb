@@ -1,7 +1,8 @@
 import { getUserId, getAccessToken } from "../lib/action";
 import apiService from "../services/apiService";
 import React from 'react';
-import Conversation from "@/app/components/inbox/Conversation";
+import Conversation from "../components/inbox/Conversation";
+
 
 export type UserType = {
     id: string;
@@ -16,7 +17,6 @@ export type ConversationType = {
 }
 
 
-
 const InboxPage = async () => {
     const userId = await getUserId();
 
@@ -29,14 +29,10 @@ const InboxPage = async () => {
         )
     }
 
+
     const token = await getAccessToken();
+    const conversations = await apiService.get('/api/chat/', token)
 
-    let conversations = await apiService.get('/api/chat/', token)
-
-    if (!Array.isArray(conversations)) {
-        console.error("API returned non-array for conversations:", conversations);
-        conversations = [];
-    }
 
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6 space-y-4">
@@ -53,11 +49,7 @@ const InboxPage = async () => {
                 )
             })}
         </main>
-
-
     )
-
-
 }
 
 

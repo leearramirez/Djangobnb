@@ -25,8 +25,8 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
 }) => {
     const messagesDiv = useRef<HTMLDivElement>(null);
     const [newMessage, setNewMessage] = useState('');
-    const myUser = conversation.users?.find((user) => user.id == userId)
-    const otherUser = conversation.users?.find((user) => user.id != userId)
+    const myUser = conversation?.users?.find((user) => user.id == userId)
+    const otherUser = conversation?.users?.find((user) => user.id != userId)
     const [realtimeMessages, setRealtimeMessages] = useState<MessageType[]>([]);
 
 
@@ -102,7 +102,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
                 {(messages || []).map((message, index) => (
                     <div
                         key={index}
-                        className={`w-[80%]py-4 px-6 rounded-xl ${message.created_by.name == myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
+                        className={`w-[80%] py-4 px-6 rounded-xl ${message.created_by.name == myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
                     >
                         <p className="font-bold text-gray-500">{message.created_by.name}</p>
                         <p>{message.body}</p>
@@ -113,7 +113,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
                 {realtimeMessages.map((message, index) => (
                     <div
                         key={index}
-                        className={`w-[80%]py-4 px-6 rounded-xl ${message.name == myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
+                        className={`w-[80%] py-4 px-6 rounded-xl ${message.name == myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
                     >
                         <p className="font-bold text-gray-500">{message.name}</p>
                         <p>{message.body}</p>
