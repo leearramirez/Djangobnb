@@ -67,7 +67,7 @@ const Categories = () => {
                 className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${category == 'villas' ? 'border-black' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}>
                 <Image
                     src="/icn-category-beach.jpeg"
-                    alt="Category - Beach"
+                    alt="Category - Villas"
                     width={20}
                     height={20}
                 />
@@ -82,7 +82,7 @@ const Categories = () => {
                 className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${category == 'cabins' ? 'border-black' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}>
                 <Image
                     src="/icn-category-beach.jpeg"
-                    alt="Category - Beach"
+                    alt="Category - Cabins"
                     width={20}
                     height={20}
                 />
@@ -97,7 +97,7 @@ const Categories = () => {
                 className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${category == 'tiny_homes' ? 'border-black' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}>
                 <Image
                     src="/icn-category-beach.jpeg"
-                    alt="Category - Beach"
+                    alt="Category - Tiny homes"
                     width={20}
                     height={20}
                 />

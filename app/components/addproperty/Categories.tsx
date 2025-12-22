@@ -19,7 +19,7 @@ const Categories: React.FC<CategoriesProps> = ({
                     className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${dataCategory == 'beach' ? 'border-gray-800' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}
                 >
                     <Image
-                        src="/icn_category_beach.jpeg"
+                        src="/icn-category-beach.png"
                         alt="Category - Beach"
                         width={20}
                         height={20}
@@ -35,8 +35,8 @@ const Categories: React.FC<CategoriesProps> = ({
                     className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${dataCategory == 'villas' ? 'border-gray-800' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}
                 >
                     <Image
-                        src="/icn_category_beach.jpeg"
-                        alt="Category - Beach"
+                        src="/icn-category-villas.png"
+                        alt="Category - Villas"
                         width={20}
                         height={20}
                     />
@@ -51,8 +51,8 @@ const Categories: React.FC<CategoriesProps> = ({
                     className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${dataCategory == 'cabins' ? 'border-gray-800' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}
                 >
                     <Image
-                        src="/icn_category_beach.jpeg"
-                        alt="Category - Beach"
+                        src="/icn-category-cabins.png"
+                        alt="Category - Cabins"
                         width={20}
                         height={20}
                     />
@@ -67,8 +67,8 @@ const Categories: React.FC<CategoriesProps> = ({
                     className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${dataCategory == 'tiny_homes' ? 'border-gray-800' : 'border-white'} opacity-60 hover:border-gray-200 hover:opacity-100`}
                 >
                     <Image
-                        src="/icn_category_beach.jpeg"
-                        alt="Category - Beach"
+                        src="/icn-category-tiny-homes.png"
+                        alt="Category - Tiny homes"
                         width={20}
                         height={20}
                     />

@@ -4,6 +4,8 @@
 import Image from 'next/image';
 
 
+
+
 import { ChangeEvent, useState } from 'react';
 import Modal from './Modal';
 import CustomButton from '../forms/CustomButton';
@@ -44,7 +46,6 @@ const AddPropertyModal = () => {
     const router = useRouter();
 
 
-    //
     // Set datas
 
 
@@ -63,7 +64,6 @@ const AddPropertyModal = () => {
     }
 
 
-    //
     // SUbmit
 
 
@@ -306,6 +306,8 @@ const AddPropertyModal = () => {
                             </div>
                         )
                     })}
+
+
                     <CustomButton
                         label='Previous'
                         className='mb-2 bg-black hover:bg-gray-800'
@@ -321,6 +323,8 @@ const AddPropertyModal = () => {
             )}
         </>
     )
+
+
     return (
         <>
             <Modal
@@ -332,6 +336,5 @@ const AddPropertyModal = () => {
         </>
     )
 }
-
 
 export default AddPropertyModal;
