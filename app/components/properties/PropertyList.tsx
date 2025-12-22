@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import PropertyListItem from "./PropertyListItem";
 import apiService from '@/app/services/apiService';
 import useSearchModal from '@/app/hooks/useSearchModal';
+import { submitGetProperties } from '@/app/lib/action';
 
 
 export type PropertyType = {
@@ -125,7 +126,7 @@ const PropertyList: React.FC<PropertyListProps> = ({
         }
 
 
-        const tmpProperties = await apiService.get(url)
+        const tmpProperties = await submitGetProperties(url);
 
 
         setProperties(tmpProperties.data.map((property: PropertyType) => {

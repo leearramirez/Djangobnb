@@ -2,6 +2,48 @@
 
 
 import { cookies } from 'next/headers';
+import { revalidatePath } from 'next/cache';
+
+
+export async function submitToggleFavorite(propertyId: string) {
+    console.log('submitToggleFavorite', propertyId);
+
+    const accessToken = await getAccessToken();
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/properties/${propertyId}/toggle_favorite/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const json = await response.json();
+
+    revalidatePath('/');
+    revalidatePath('/myfavorites');
+
+    return json;
+}
+
+
+export async function submitGetProperties(url: string) {
+    console.log('submitGetProperties', url);
+
+    const accessToken = await getAccessToken();
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+    })
+
+    return await response.json();
+}
+
 
 
 export async function handleRefresh() {

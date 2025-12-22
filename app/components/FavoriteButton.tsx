@@ -1,7 +1,7 @@
 'use client';
 
 
-import apiService from "../services/apiService";
+import { submitToggleFavorite } from "../lib/action";
 
 
 interface FavoriteButtonProps {
@@ -20,7 +20,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
         e.stopPropagation();
 
 
-        const response = await apiService.post(`/api/properties/${id}/toggle_favorite/`, {})
+        const response = await submitToggleFavorite(id);
 
 
         markFavorite(response.is_favorite);
